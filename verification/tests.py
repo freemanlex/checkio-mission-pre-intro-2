@@ -1,40 +1,42 @@
 init_code = """
-if not "a" in USER_GLOBAL:
-    raise NotImplementedError("Where is 'a' variable?")
+if not "robots" in USER_GLOBAL:
+    raise NotImplementedError("Where is 'robots' variable?")
 
-if not "b" in USER_GLOBAL:
-    raise NotImplementedError("Where is 'b' variable?")
+robots = USER_GLOBAL['robots']
     
-a = USER_GLOBAL['a']
-b = USER_GLOBAL['b']
+if not isinstance(robots, int):
+    raise TypeError("'robots' variable must be an integer")
+    
+if not "droids" in USER_GLOBAL:
+    raise NotImplementedError("Where is 'droids' variable?")
+    
+droids = USER_GLOBAL['droids']
 
-if not isinstance(a, int):
-    raise TypeError("'a' variable must be an integer")
-
-if not isinstance(b, int):
-    raise TypeError("'b' variable must be an integer")
+if not isinstance(droids, int):
+    raise TypeError("'droids' variable must be an integer")
 
     
 if not "add" in USER_GLOBAL:
     raise NotImplementedError("Where is 'add' variable?")
 
-if not "multi" in USER_GLOBAL:
-    raise NotImplementedError("Where is 'multi' variable?")
-
 add = USER_GLOBAL['add']
-multi = USER_GLOBAL['multi']
 
 if not isinstance(add, int):
     raise TypeError("'add' variable must be an integer")
 
+if add != robots + droids:
+    raise ValueError("'add' variable must be a sum of 'robots' and 'droids'")    
+
+if not "multi" in USER_GLOBAL:
+    raise NotImplementedError("Where is 'multi' variable?")
+
+multi = USER_GLOBAL['multi']
+
 if not isinstance(multi, int):
     raise TypeError("'multi' variable must be an integer")
 
-if add != a + b:
-    raise ValueError("'add' variable must be a sum of 'a' and 'b'")
-
-if multi != a * b:
-    raise ValueError("'multi' variable must be a product of 'a' and 'b'")
+if multi != robots * droids:
+    raise ValueError("'multi' variable must be a product of 'robots' and 'droids'")
 """
 
 run_test = """
